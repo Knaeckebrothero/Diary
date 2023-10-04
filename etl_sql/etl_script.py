@@ -1,7 +1,21 @@
 import os
 import dotenv
 import mysql.connector
+import datetime as dt
 import pandas as pd
+
+
+# Function to convert the JSON data into a DataFrame that matches the database schema
+def convert_to_db_formate(data: pd.DataFrame) -> pd.DataFrame:
+    result = pd.DataFrame()
+
+    parsed_date = dt.datetime.strptime(data['date'], '%d.%m.%Y')
+    result['diary_day']['today_date'] = parsed_date.strftime('%Y-%m-%d')
+    result['diary_day']['fell_asleep'] = data['fell_asleep']
+    result['diary_day']['woke_up'] = data['woke_up']
+
+    return result
+
 
 # Load environment variables
 dotenv.load_dotenv(dotenv.find_dotenv())
@@ -16,9 +30,11 @@ conn = mysql.connector.connect(
 
 # Create a cursor
 cursor = conn.cursor()
+path = os.getenv('JSON_PATH')
 
 # Load the JSON data
-data = pd.read_json(os.getenv('JSON_PATH'), orient='records')
+for file in os.listdir(path):
+    json_data = pd.read_json(path + file)
 
 # Transform the data (if necessary)
 # This step will depend on the structure of your JSON data and your database schema
