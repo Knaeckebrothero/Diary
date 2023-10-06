@@ -95,12 +95,30 @@ typings/
 
 # Gradle
 .gradle/
+build/
+
+# Visual Studio Code
+.vscode
+.factorypath
+
+# patch
+*.orig
+*.rej
+
+# Local environment
+.env
+
+# Plugin directory
+/.quarkus/cli/plugins/
 
 # Eclipse
+.project
 .classpath
 .settings/
+bin/
 
 # IntelliJ
+.idea
 *.ipr
 *.iml
 *.iws
@@ -118,13 +136,3 @@ nb-configuration.xml
 # Vim
 *.swp
 *.swo
-
-# patch
-*.orig
-*.rej
-
-# Local environment
-.env
-
-# Plugin directory
-/.quarkus/cli/plugins/
