@@ -1,0 +1,21 @@
+{
+    "path": "entries/",
+    "activityCategory": [
+		"Highly demanding", 
+		"Demanding", 
+		"Less demanding", 
+		"Relaxing"
+	],
+    "activityTags": [
+		"Academic", "Business", "Hobbies", 
+		"Breaks", "Leisure", "Exercise", 
+		"Housekeeping", "Personal Care", "Administrative"
+	],
+    "dayTags": [
+		"productive", "relaxed", "stressful",
+		"friends", "colleagues", "family", "partner", 
+		"happy", "sad", "excited", "tired", 
+		"junk-food", "insomnia", "dispute",
+		"hot", "cold", "rainy"
+    ]
+}

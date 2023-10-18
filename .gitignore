@@ -1,5 +1,6 @@
 # Development related test or config files from development folder
 development/*
+*.json
 
 # Yaml config files
 *.yaml
@@ -95,7 +96,6 @@ typings/
 
 # Gradle
 .gradle/
-build/
 
 # Visual Studio Code
 .vscode
@@ -112,23 +112,16 @@ build/
 /.quarkus/cli/plugins/
 
 # Eclipse
-.project
 .classpath
 .settings/
-bin/
 
 # IntelliJ
-.idea
 *.ipr
 *.iml
 *.iws
 
 # NetBeans
 nb-configuration.xml
-
-# Visual Studio Code
-.vscode
-.factorypath
 
 # OSX
 .DS_Store
