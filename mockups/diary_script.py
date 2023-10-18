@@ -8,15 +8,15 @@ from datetime import datetime as dt
 def get_path():
     # Load directory and filename
     filename = f"diary_{st.session_state['date'].strftime('%d%m%Y')}.json"
-    filepath = './entries/' + filename
+    filepath = 'entries/' + filename
     return filepath
 
 
 # Load a day
 def load_day():
     # Create the directory if it doesn't exist
-    if not os.path.exists('./entries/'):
-        os.makedirs('./entries/')
+    if not os.path.exists('entries'):
+        os.makedirs('entries')
 
     # Load directory and filename
     filepath = get_path()
@@ -47,6 +47,7 @@ def load_day():
     # Load the day
     with open(filepath, 'r') as f:
         st.session_state.today = json.load(f)
+        st.session_state.today['changelog'].append(dt.now().strftime('%H:%M'))
 
 
 # Save a day
@@ -151,7 +152,7 @@ with activities:
         st.session_state.activity_start = st.session_state['activity_end']
         st.session_state.activity_end = time(0, 0)
         st.session_state.activity_tags = []
-        st.experimental_rerun()
+        st.rerun()
 
     # Last activity
     with col2:
@@ -245,7 +246,7 @@ with write:
 if st.session_state['date'].strftime('%d.%m.%Y') != st.session_state.today['date']:
     # Delete today from st.session_state and rerun script to create or load the new day
     load_day()
-    st.experimental_rerun()
+    st.rerun()
 else:
     # Save changes to file on script rerun
     save_day()
